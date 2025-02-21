@@ -1,7 +1,7 @@
-export const MONGODB_CONNECTION = ""
+export const MONGODB_CONNECTION = "mongodb+srv://nurmohammad1:UboAVy010sgKNZSP@cluster0.qob3u.mongodb.net"
 
-export const JWT_SECRET = ""
-export const JWT_EXPIRES_IN = ""
+export const JWT_SECRET = "secret"
+export const JWT_EXPIRES_IN = "15min"
 
 export const EMAIL_HOST = ""
 export const EMAIL_PORT = ""
@@ -15,3 +15,4 @@ export const REQUEST_LIMIT_TIME = "15m"
 export const REQUEST_LIMIT_COUNT = "100"    
 
 export const WEB_CACHE = false;
+export const PORT = 3000;
