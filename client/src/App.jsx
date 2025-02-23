@@ -1,12 +1,20 @@
-import Button from "./components/Button"
+import Button from "./components/Button";
+import { useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import DashboardSidebar from "./components/DashboardSidebar";
 
 const App = () => {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello World</h1>
-      <Button />
-    </>
-  )
-}
+  const navigate = useNavigate();
 
-export default App
+  const handleClick = () => {
+    navigate("/login");
+  };
+
+  return (
+    <Routes>
+      <Route path="/" element={<DashboardSidebar />} />
+    </Routes>
+  );
+};
+
+export default App;
