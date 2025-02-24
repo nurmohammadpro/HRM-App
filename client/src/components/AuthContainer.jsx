@@ -1,45 +1,47 @@
+import { Outlet } from "react-router-dom";
+import LoginComponent from "./LoginComponent";
+import RegisterComponent from "./RegisterComponent";
+import { useLocation, useNavigate } from "react-router-dom";
+import HomepageBG from "../assets/Homepage-bg.png";
+import MetaLogo from "../assets/meta-logo.png";
 import Button from "./Button";
-import InputField from "./InputField";
-import { useNavigate } from "react-router-dom";
 
 const AuthContainer = () => {
+  const location = useLocation();
   const navigate = useNavigate();
+  const isLogin = location.pathname === "/login";
+  const isRegister = location.pathname === "/register";
 
-  const handleSignUp = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
     navigate("/register");
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center">
-      {/* Homepage Content */}
-      <h2 className="font-heading text-6xl text-gray-800 mb-8">
-        Welcome Back!
-      </h2>
-      <p className="text-gray-600 mb-6">Please login here</p>
-      <form className="flex flex-col gap-4 mb-6" action="">
-        <InputField
-          label="Email"
-          type="email"
-          placeholder="Enter your email"
-          onChange={(e) => e.target.value}
-        />
-        <InputField
-          label="Email"
-          type="password"
-          placeholder="Enter your password"
-          onChange={(e) => e.target.value}
-        />
-        <Button title="Login" type="submit" variant="dark" />
-      </form>
-      <p className="text-gray-400">
-        Haven't an account? Please{" "}
-        <span
-          onClick={handleSignUp}
-          className="font-bold underline hover:text-gray-600 cursor-pointer transition-all ease-in-out duration-300"
-        >
-          Register Now!
-        </span>
-      </p>
+    <div className="flex gap-4 items-center justify-center h-screen w-full max-w-[1440px] mx-auto">
+      <div className="w-1/2">
+        <img src={HomepageBG} alt="HomepageBG" width={1080} />
+      </div>
+
+      <div className="w-1/2">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex gap-2 items-center mb-8">
+            <img src={MetaLogo} alt="" width={40} height={40} />
+            <h1 className="text-2xl font-bold font-content">HRM System</h1>
+          </div>
+          <div className="flex gap-2">
+            <Button title="Login" variant="dark" onClick={handleLogin} />
+            <Button title="Register" variant="dark" onClick={handleRegister} />
+          </div>
+          <Outlet />{" "}
+          {/* This is where LoginComponent, RegisterComponent, etc. will render */}
+        </div>
+      </div>
     </div>
   );
 };

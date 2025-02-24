@@ -1,18 +1,11 @@
-import Button from "./components/Button";
-import { useNavigate } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
+import AuthContainer from "./components/AuthContainer"; // Directly use AuthContainer
 
 const App = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/login");
-  };
-
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
+      <Route path="/*" element={<AuthContainer />} /> {/* All auth routes */}
+      {/* Other routes (e.g., dashboard, profile) */}
     </Routes>
   );
 };
